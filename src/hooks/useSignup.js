@@ -8,7 +8,7 @@ export const useSignup = () => {
   const [isPending, setIsPending] = useState(false)
   const { dispatch } = useAuthContext()
 
-  const signup = async (email, password, displayName, thumbnail) => {
+  const signup = async (displayName, email, password, thumbnail) => {
     setError(null)
     setIsPending(true)
   
@@ -45,6 +45,7 @@ export const useSignup = () => {
   }
 
   useEffect(() => {
+    setIsCancelled(false);
     return () => setIsCancelled(true)
   }, [])
 
