@@ -10,7 +10,7 @@ export default function Signup() {
   const  [password, setPassword] = useState('')
   const  [thumbnail, setThumbnail] = useState(null)
   const  [thumbnailError, setThumbnailError] = useState(null)
-  const { signup, isPending, error } = useSignup()
+  const  { signup, isPending, error } = useSignup()
 
   const handleSubmit = (e) => {
     e.preventDefault()
