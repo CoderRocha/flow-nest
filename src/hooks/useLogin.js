@@ -33,6 +33,7 @@ export const useLogin = () => {
   }
 
   useEffect(() => {
+    setIsCancelled(false);
     return () => setIsCancelled(true)
   }, [])
 
