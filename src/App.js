@@ -12,6 +12,7 @@ import Project from './pages/project/Project'
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import { useAuthContext } from "./hooks/useAuthContext";
+import OnlineUsers from './components/OnlineUsers';
 
 function App() {
   const { user, authIsReady } = useAuthContext()
@@ -31,6 +32,7 @@ function App() {
               <Route path="/signup" element={user ? <Navigate to="/" /> : <Signup />}/>
             </Routes>
           </div>
+          {user && <OnlineUsers />}
         </BrowserRouter>
       )}
     </div>
