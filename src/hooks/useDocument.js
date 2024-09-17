@@ -11,12 +11,18 @@ export const useDocument = (collection, id) => {
         const ref = projectFirestore.collection(collection).doc(id)
 
         const unsubscribe = ref.onSnapshot((snapshot) => {
-            setDocument({...snapshot.data(), id: snapshot.id })
-            setError(null)
-        }, (err) => {
-            console.log(err.message)
-            setError('failed to get document')
-        })
+            if (snapshot.exists) {
+                setDocument({ ...snapshot.data(), id: snapshot.id });
+                setError(null);
+              } else {
+                setError("This project does not exist yet.");
+              }
+            },
+            (err) => {
+              console.log(err.message);
+              setError("Failed to get project");
+            }
+          );
 
         return () => unsubscribe()
 
