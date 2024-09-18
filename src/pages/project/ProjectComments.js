@@ -30,7 +30,7 @@ export default function ProjectComments({ project }) {
 
   return (
     <div className="project-comments">
-      <h4>Project Comments</h4>
+      <h4>Project Comments:</h4>
 
       <ul>
         {project.comments.length > 0 && project.comments.map(comment => (
@@ -40,7 +40,7 @@ export default function ProjectComments({ project }) {
               <p>{comment.displayName}</p>
             </div>
             <div className="comment-date">
-              <p>date here</p>
+              <p>Date Here</p>
             </div>
             <div className="comment-content">
               <p>{comment.content}</p>
@@ -51,7 +51,7 @@ export default function ProjectComments({ project }) {
 
       <form className="add-comment" onSubmit={handleSubmit}>
         <label>
-          <span>Add new comment:</span>
+          <span>Add New Comment:</span>
           <textarea 
             onChange={(e) => setNewComment(e.target.value)}
             value={newComment}
