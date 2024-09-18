@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Avatar from '../../components/Avatar'
 import { useFirestore } from '../../hooks/useFirestore'
 import { useAuthContext } from '../../hooks/useAuthContext'
@@ -6,9 +7,12 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 export default function ProjectSummary({ project }) {
   const { deleteDocument } = useFirestore('projects')
   const { user } = useAuthContext()
+  const navigate = useNavigate()
 
   const handleClick = (e) => {
     deleteDocument(project.id)
+    navigate('/')
+
   }
 
   return (
