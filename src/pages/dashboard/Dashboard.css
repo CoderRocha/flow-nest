@@ -25,5 +25,5 @@
     border: 0;
 }
 .project-filter button.active {
-    color: var(--primary-color);
+    color: gray;
 }
