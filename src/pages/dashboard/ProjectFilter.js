@@ -1,6 +1,6 @@
 import React from 'react'
 
-const filterList = ['All', 'Mine', 'Development', 'Design', 'Marketing', 'Sales']
+const filterList = ['All', 'Mine', 'Development', 'Design', 'Sales', 'Marketing']
 
 export default function ProjectFilter({ currentFilter, changeFilter }) {
 

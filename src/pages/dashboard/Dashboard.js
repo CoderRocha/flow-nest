@@ -11,36 +11,38 @@ import './Dashboard.css'
 export default function Dashboard() {
   const { user } = useAuthContext()
   const { documents, error } = useCollection('projects')
-  const [currentFilter, setCurrentFilter] = useState('All') 
+  const [currentFilter, setCurrentFilter] = useState('All')
 
   const changeFilter = (newFilter) => {
     setCurrentFilter(newFilter)
   }
 
   const projects = documents ? documents.filter((document) => {
-    if (!document) return false // to ensure 'document' is not 'undefined'
+    if (!document) return false // Ensure 'document' is not 'undefined'
+    
     switch (currentFilter) {
       case 'All':
         return true
+      
       case 'Mine':
         let assignedToMe = false
-        if (document.assignedUsersList) { // to ensure 'assignedUsersList' exists
-          document.assignedUsersList.forEach((u) => {
-            if (user.uid === u.id) {
-              assignedToMe = true
-            }
-          })
+        if (Array.isArray(document.assignedUsersList)) { // Ensure 'assignedUsersList' is an array
+          assignedToMe = document.assignedUsersList.some((u) => u.id === user.uid)
         }
         return assignedToMe
+      
       case 'Development':
       case 'Design':
       case 'Sales':
       case 'Marketing':
-        return document.category === currentFilter
+        return document.category && document.category === currentFilter // Ensure category matches exactly
+      
       default:
         return true
     }
   }) : null
+
+  console.log(document.category, currentFilter)
 
   return (
     <div>
