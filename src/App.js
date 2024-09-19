@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
-          <Sidebar />
+          {user ? <Sidebar element={<Dashboard />} /> : ''}
           <div className="container">
             <Navbar />
             <Routes>
